@@ -1,0 +1,33 @@
+<!DOCTYPE configML>
+<configuration>
+    <Servers>
+        <NumberOfElements value="1"/>
+        <Element_0>
+            <ServerName value="Local" />
+            <IPAddress value="127.0.0.1" />
+            <Type value="Client" />
+            <Port value="18955" />
+            <StartAuto value="0" />
+            <ConnectAuto value="1" />
+            <PlusConfigFile value="BOGUS" />
+        </Element_0>
+    </Servers>
+    <Tools>
+        <NumberOfElements value="1"/>
+        <Element_0>
+            <ToolName value="Pointer"/>
+            <ToolType value="Pointer"/>
+            <ToolModelFile value="fs613-pointer.ply"/>
+            <ToolParamFile value="ToolParams/FiducialObjectPointer0.xml"/>
+        </Element_0>
+    </Tools>
+    <Associations>
+        <NumberOfElements value="1"/>
+        <Element_0>
+            <DeviceName value="PointerToReference"/>
+            <ToolName value="Pointer"/>
+            <ToolPart value="Transform"/>
+        </Element_0>
+    </Associations>
+
+</configuration>

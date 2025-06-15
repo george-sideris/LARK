@@ -1,0 +1,30 @@
+<!DOCTYPE configML>
+<configuration>
+    <Servers>
+        <NumberOfElements value="1"/>
+            <Element_0>
+                <ServerName value="server" />
+                <IPAddress value="127.0.0.1" />
+                <Port value="18955" />
+                <StartAuto value="0" />
+                <ConnectAuto value="1" />
+                <PlusConfigFile value="" />
+            </Element_0>
+    </Servers>
+    <Tools>
+        <NumberOfElements value="1" />
+        <Element_0>
+            <ToolName value="PointerTool" />
+            <ToolType value="Pointer" />
+            <ToolModelFile value="fs613-pointer.ply"/>
+        </Element_0>
+    </Tools>
+    <Associations>
+        <NumberOfElements value="1"/>
+        <Element_0>
+            <DeviceName value="PointerDevice"/>
+            <ToolName value="PointerTool"/>
+            <ToolPart value="Transform"/>
+        </Element_0>
+    </Associations>
+</configuration>

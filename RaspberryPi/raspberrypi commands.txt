@@ -1,0 +1,38 @@
+# Static IP on main computer should be set to 192.168.3.2
+
+# Connect to pi X
+ssh nist@camX.local
+password: groupx
+
+# Launch video stream
+# If running real_multicam.py, replace port=5000 with port=500X where X is the number labelled on the pi
+rpicam-vid -t 0 -n --inline --framerate 60 --intra 1 --level 4.2 --profile high --bitrate 100000000 --denoise cdn_off -o - | gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay pt=96 ! udpsink host=192.168.3.2 port=5000 sync=false
+
+
+### PI SETUP, ONLY NEEDS TO BE DONE ON EACH PI ###
+# Set static ip to 192.168.3.10X where X is the camera/board number
+sudo nmcli c mod 'Wired connection 1' ipv4.addresses 192.168.3.10X/24 ipv4.method manual
+sudo nmcli con mod 'Wired connection 1' ipv4.gateway 192.168.3.1
+sudo nmcli c down 'Wired connection 1' && sudo nmcli c up 'Wired connection 1'
+
+# Install necessary packages
+sudo apt-get install gstreamer1.0-tools
+
+# Reset 
+sudo systemctl restart NetworkManager
+
+# Check ssh status
+sudo systemctl status ssh
+
+# Restart status
+sudo systemctl restart ssh
+
+# Wired IPv4 addresses
+Address: 192.168.3.2
+Netmask: 255.255.255.0
+
+# When was running slow, tried:
+# - Unplugging 1 minute, (ethernet then power)
+# - Connecting (ethernet after raspi has started up)
+# - Restarting ssh 
+# - Turning usb ethernet connection off, then on

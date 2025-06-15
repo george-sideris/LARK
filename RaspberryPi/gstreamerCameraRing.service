@@ -1,0 +1,13 @@
+[Unit]
+Description=Camera Ring gstreamer command
+After=multi-user.target
+
+[Service]
+Type=idle
+User=nist
+### REPLACE PORT 5000 WITH PORT 500{CAM_ID} ###
+ExecStart=rpicam-vid -t 0 -n --inline --framerate 60 --intra 1 --level 4.2 --profile high --bitrate 100000000 --denoise cdn_off -o - | gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay pt=96 ! udpsink host=192.168.5.2 port=5000 sync=false
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
