@@ -225,9 +225,9 @@ The system has been validated through comprehensive experiments:
 
 #### Trajectory Tracking Performance (Grid Experiment)
 
-![Trajectory RMSE Results](media/trajectory_rmse_results.png)
+![Trajectory TRE Results](media/trajectory_rmse_results.png)
 
-*Root Mean Square Error (RMSE) for dynamic trajectory tracking showing performance across different methods on the machined precision grid.*
+*Trajectory Target Registration Error (TRE) for dynamic trajectory tracking showing performance across different methods on the machined precision grid.*
 
 ## Data Availability
 
