@@ -14,20 +14,23 @@ import itertools
 from util.landmark_registration import register, apply_transform
 from matplotlib.animation import FuncAnimation
 from mpl_toolkits.mplot3d import Axes3D
+from scipy.stats.mstats import hdquantiles
 
 ### PRESS Q ON ANY CAMERA WINDOW TO QUIT ###
 
-RATE = 10
-KALMAN = True
-ADAPTIVE = True
-REJECT_OUTLIERS = False
-OFFSET = False
-MARKER_MAPPER = False
+RATE = 100
+PRERECORDED = True
 STEREO = False
+KALMAN = False
+ADAPTIVE = False
+REJECT_OUTLIER_TAGS = False
+REJECT_THRESH = 8  # reprojection error rejection threshold, default 8
+REJECT_OUTLIER_CAMS = False
+OFFSET = False
+MARKER_MAPPER = True  # this flag currently just uses the calibFiles for mono, not the mapperFiles
 STEREO_REPROJECT = False
 STEREO_TRIANGULATE_PAIRS = False
 STEREO_TRIANGULATE_ALL = True
-PRERECORDED = False
 PLOTTING = False
 PLOTTING_3D = False
 CROP = True
@@ -36,16 +39,21 @@ ROS = False
 IGT = True
 IGT_Port = 18995
 DISPLAY = True
-cams = [1,2,3,4] # Camera IDs that correspond to label on pi and port number 500X
+SAVE_LAST_FRAMES = False  # Save the last frame from each camera with ArUco overlay
+LAST_FRAMES_DIR = 'last_frames'  # Directory to save last frames
+cams = [1,2,3,4,5] # Camera IDs that correspond to label on pi and port number 500X
 toolOffset = (-0.37746276, -0.50223948, -174.26308552)
 calibFile_camera = '../Calibration/calib_files/camera/T33_minpos_int_percam_cam1fixed.json'
-calibFile_target = '../Calibration/calib_files/tool/target_T26_2_thresh2.txt'
-calibFile_ref = '../Calibration/calib_files/tool/ref_T26_2_thresh2.txt'
-mapperFile_target = '../Calibration/calib_files/marker_mapper/target_map_T33_3.yml'
-mapperFile_ref = '../Calibration/calib_files/marker_mapper/ref_map_T33_3.yml'
+# calibFile_camera = '../Calibration/calib_files/camera/T33int_T53ext.json'
+calibFile_target = '../Calibration/calib_files/tool/T33_minpos_int_percam_cam1fixed_target.txt'
+calibFile_ref = '../Calibration/calib_files/tool/T33_minpos_int_percam_cam1fixed_ref.txt'
+# calibFile_target = '../Calibration/calib_files/tool/target_T33int_T53ext_minreproj.txt'
+# calibFile_ref = '../Calibration/calib_files/tool/ref_T33int_T53ext_minreproj.txt'
+# mapperFile_target = '../Calibration/calib_files/marker_mapper/target_map_T33_3.yml'
+# mapperFile_ref = '../Calibration/calib_files/marker_mapper/ref_map_T33_3.yml'
 RFile_mono = '../Calibration/calib_files/filter/R_30x30_mono.txt'
 QFile_stereo = '../Calibration/calib_files/filter/Q_matrix_stereo.txt'
-videoFiles = 'video/HT03_RF'  # Directory that contains a {cam}.{videoExt} video file for each camqera ID being used
+videoFiles = '../Registration/Landmark_Registration_Trials/HT04/HT04_RB'  # Directory that contains a {cam}.{videoExt} video file for each camqera ID being used
 videoExt = 'mp4' # extension of provided video files
 imageSize = 1456, 1088
 cams_all = [1,2,3,4,5]  # list of all possible cam IDs
@@ -58,7 +66,7 @@ if ROS:
 # aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_100)
 aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_APRILTAG_16h5) # Works with marker mapper
 criteria_refineLM = (cv2.TERM_CRITERIA_EPS+cv2.TERM_CRITERIA_COUNT, 200, 1.19209e-07)  # Default count = 20, epsilon = 1.19209e-07
-poseEstimator = pose_estimation(framerate=RATE, plotting=False, aruco_dict=aruco_dict, LMcriteria=criteria_refineLM)
+poseEstimator = pose_estimation(framerate=RATE, plotting=False, aruco_dict=aruco_dict, LMcriteria=criteria_refineLM, ransac=REJECT_OUTLIER_TAGS, ransacTreshold=REJECT_THRESH)
 
 arucoParams = cv2.aruco.DetectorParameters()
 arucoParams.cornerRefinementMethod = cv2.aruco.CORNER_REFINE_APRILTAG # Default CORNER_REFINE_NONE
@@ -67,6 +75,7 @@ arucoParams.cornerRefinementMinAccuracy = 0.001  # Default 0.1
 arucoParams.adaptiveThreshWinSizeStep = 2  # Default 10
 arucoParams.adaptiveThreshWinSizeMax = 30  # Default 23
 arucoParams.adaptiveThreshConstant = 8  # Default 7
+# arucoParams.aprilTagMinWhiteBlackDiff = 1  # Default 7
 # arucoParams.polygonalApproxAccuracyRate = 0.01  # Default 0.03
 
 detector = cv2.aruco.ArucoDetector(aruco_dict, arucoParams)
@@ -220,6 +229,9 @@ def runCam(cam, cameraMatrix, distCoeffs, childConn, stopEvent, barrier):
         print(f"Cannot open camera {cam}.")
         return
     
+    # Variable to store the last valid frame with overlay
+    last_overlay_frame = None
+    
     # Read the first frame to get the dimensions
     ret, frame = cap.read()
     if not ret:
@@ -238,7 +250,17 @@ def runCam(cam, cameraMatrix, distCoeffs, childConn, stopEvent, barrier):
         ret, frame = cap.read()  # ret is True if frame is read correctly
         if not ret:
             if PRERECORDED and not stopEvent.is_set():
-                print("Prerecorded video finished.")
+                print(f"Prerecorded video finished for camera {cam}.")
+                # Save the last frame with overlay if available
+                if SAVE_LAST_FRAMES and last_overlay_frame is not None:
+                    # Create output directory if it doesn't exist
+                    import os
+                    os.makedirs(LAST_FRAMES_DIR, exist_ok=True)
+                    
+                    # Save the last frame with overlay
+                    output_filename = os.path.join(LAST_FRAMES_DIR, f'cam_{cam}_last_frame.png')
+                    cv2.imwrite(output_filename, last_overlay_frame)
+                    print(f"Saved last frame for camera {cam}: {output_filename}")
                 stopEvent.set()
             elif not PRERECORDED:
                 print(f"Can't receive frame from camera {cam}.")
@@ -253,13 +275,17 @@ def runCam(cam, cameraMatrix, distCoeffs, childConn, stopEvent, barrier):
             frame_target = frame[ymin_target:ymax_target, xmin_target:xmax_target]
             frame_ref = frame[ymin_ref:ymax_ref, xmin_ref:xmax_ref]
             
-            corners_target, ids_target, _ = detector.detectMarkers(frame_target)
+            corners_target, ids_target, rejected_target = detector.detectMarkers(frame_target)
+            corners_target, ids_target, _, _ = detector.refineDetectedMarkers(frame_target, target_board, corners_target, ids_target, rejected_target, cameraMatrix, distCoeffs)
+            
             if ids_target is not None:
                 corners_target = np.array(corners_target) + (xmin_target, ymin_target)
                 corners.append(corners_target)
                 ids.append(ids_target)
                 
-            corners_ref, ids_ref, _ = detector.detectMarkers(frame_ref)
+            corners_ref, ids_ref, rejected_ref = detector.detectMarkers(frame_ref)
+            corners_ref, ids_ref, _, _ = detector.refineDetectedMarkers(frame_ref, ref_board, corners_ref, ids_ref, rejected_ref, cameraMatrix, distCoeffs)
+            
             if ids_ref is not None:
                 corners_ref = np.array(corners_ref) + (xmin_ref, ymin_ref)
                 corners.append(corners_ref)
@@ -272,6 +298,7 @@ def runCam(cam, cameraMatrix, distCoeffs, childConn, stopEvent, barrier):
                 corners = np.vstack(corners, dtype=np.float32)
         else:
             corners, ids, _ = detector.detectMarkers(frame)
+            
         
         if STEREO:
             childConn.send((corners, ids))
@@ -297,6 +324,11 @@ def runCam(cam, cameraMatrix, distCoeffs, childConn, stopEvent, barrier):
             found = False
             
         overlayImg = cv2.aruco.drawDetectedMarkers(frame, corners, ids)
+        
+        # Store this frame as the last valid overlay frame
+        if SAVE_LAST_FRAMES:
+            last_overlay_frame = overlayImg.copy()
+        
         if DISPLAY: 
             cv2.imshow(f'Camera {cam}', overlayImg)
             
@@ -431,6 +463,14 @@ def triangulate(projMats, imgPoints):
     worldPoint = Vh[3,:3]/Vh[3,3]
     
     return worldPoint
+
+def doubleMAD(data):  # returns boolean array where inliers are True, based on doubleMAD outlier rejection
+    median = hdquantiles(data, prob=0.5)[0]
+    # mad_lower = 1.4826*hdquantiles(np.abs(data[data<=median]-median), prob=0.5)[0]
+    mad_upper = 1.4826*hdquantiles(np.abs(data[data>=median]-median), prob=0.5)[0]
+    # lower = median - 3*mad_lower
+    upper = median + 3*mad_upper
+    return data <= upper
 
 def plot3D(pts, fig=None, ax=None):
     # pts should be 3xN
@@ -640,14 +680,27 @@ if __name__ == "__main__":
                         if len(camIndices) < 2: continue
                         objPoints = tagPoints[tag].reshape((1,4,3))
                         worldPoints = np.zeros((1,4,3))
+                        # if REJECT_OUTLIER_TAGS: reprojErrors = np.zeros((4,len(camIndices)))
                         
                         for corner in range(4):
                             imgPoints = allCorners[tag, camIndices, corner]
                             worldPoints[0,corner] = triangulate(projMats[camIndices], imgPoints)
+                            
+                            if REJECT_OUTLIER_TAGS:
+                                imgPoints_reproj = projMats[camIndices] @ np.vstack([worldPoints[0,corner].reshape(3,1),1])
+                                imgPoints_reproj = (imgPoints_reproj.reshape(-1,3) / imgPoints_reproj[:,-1])[:,:2]
+                                # reprojErrors[corner] = np.linalg.norm(imgPoints_reproj - imgPoints, axis=1)
+                                reprojErrors = np.linalg.norm(imgPoints_reproj - imgPoints, axis=1)
+                                if np.max(reprojErrors) > REJECT_THRESH: break
+                        else:
                         
-                        objPoints_all.append(objPoints)
-                        worldPoints_all.append(worldPoints)
-                        tags_all.append(tag)
+                            # if REJECT_OUTLIER_TAGS and np.max(reprojErrors) > REJECT_THRESH:
+                            #     continue
+                            
+                            objPoints_all.append(objPoints)
+                            worldPoints_all.append(worldPoints)
+                            tags_all.append(tag)
+                    
                     
                 tags_all = np.array(tags_all)
                 objPoints_all = np.vstack(objPoints_all)
@@ -672,6 +725,18 @@ if __name__ == "__main__":
                 
                 R_target, t_target = rigidTransform(objPoints_target, worldPoints_target, repeats_target)
                 R_ref, t_ref = rigidTransform(objPoints_ref, worldPoints_ref, repeats_ref)
+                
+                # if REJECT_OUTLIER_TAGS:
+                #     errs_target = np.linalg.norm(R_target @ objPoints_target + t_target - worldPoints_target, axis=0)
+                #     errs_ref = np.linalg.norm(R_ref @ objPoints_ref + t_ref - worldPoints_ref, axis=0)
+                #     filteredCorners_target = doubleMAD(errs_target)
+                #     filteredCorners_ref = doubleMAD(errs_ref)
+                #     if np.sum(~filteredCorners_target):
+                #         objPoints_target, worldPoints_target, repeats_target = objPoints_target[:,filteredCorners_target], worldPoints_target[:,filteredCorners_target], repeats_target[filteredCorners_target]
+                #         R_target, t_target = rigidTransform(objPoints_target, worldPoints_target, repeats_target)
+                #     if np.sum(~filteredCorners_ref):
+                #         objPoints_ref, worldPoints_ref, repeats_ref = objPoints_ref[:,filteredCorners_ref], worldPoints_ref[:,filteredCorners_ref], repeats_ref[filteredCorners_ref]
+                #         R_ref, t_ref = rigidTransform(objPoints_ref, worldPoints_ref, repeats_ref)
                 
                 rel_trans = R_ref.T @ (t_target - t_ref)
                 rel_rot_matrix = R_target.T @ R_ref
@@ -712,7 +777,7 @@ if __name__ == "__main__":
         if len(poses) > 0:
             if KALMAN:
                 if kalman_filter.has_been_initiated():
-                    if REJECT_OUTLIERS:
+                    if REJECT_OUTLIER_CAMS:
                         poses_no_outliers = reject_outliers(poses=poses, m = 2)
                         kalman_filter, final_pose = update_kalman(kalman_filter, poses=poses_no_outliers, covars=covars)
                     else:

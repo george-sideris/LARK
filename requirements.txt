@@ -1,0 +1,40 @@
+# LARK: Low-cost Accurate tracking system Requirements
+# Image processing and computer vision
+opencv-python>=4.8.0
+opencv-contrib-python>=4.8.0
+
+# Numerical computing
+numpy>=1.21.0
+scipy>=1.7.0
+
+# Data analysis and visualization
+pandas>=1.3.0
+matplotlib>=3.5.0
+
+# 3D transformations
+scikit-spatial
+
+# Real-time communication
+pyigtl
+
+# Configuration files
+pyyaml
+
+# Keyboard input handling
+pynput
+
+# SSH connections (for Raspberry Pi control)
+paramiko
+
+# 3D mesh processing
+trimesh
+
+# File format support
+tomli
+pillow
+
+# Statistical analysis (R packages)
+# Note: R must be installed separately with packages: ggplot2, dplyr, tidyr, etc.
+
+# Multi-processing support (included in Python standard library)
+# multiprocessing
