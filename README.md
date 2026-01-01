@@ -259,6 +259,6 @@ If you use LARK in your research, please cite our preprint:
 
 ## License
 
-This project is provided for research and educational purposes. Please cite the above publication if you use this code in your work.
+This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You are free to use, modify, and distribute this code with appropriate attribution. Please cite the above publication if you use this code in your work.
 
 ---
