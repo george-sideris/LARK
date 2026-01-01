@@ -217,17 +217,17 @@ The system has been validated through comprehensive experiments:
 - Graceful degradation under occlusion
 - Real-time performance at 30-35 FPS
 
-#### Point Target Registration Error Results
+#### Point Target Registration Error Results (Grid Experiment)
 
 ![Point TRE Results](media/point_tre_results.png)
 
-*Target Registration Error (TRE) for static point tracking across different tracking methods and camera configurations.*
+*Target Registration Error (TRE) for static point tracking across different tracking methods and camera configurations on the machined precision grid.*
 
-#### Trajectory Tracking Performance
+#### Trajectory Tracking Performance (Grid Experiment)
 
 ![Trajectory RMSE Results](media/trajectory_rmse_results.png)
 
-*Root Mean Square Error (RMSE) for dynamic trajectory tracking showing performance across different methods.*
+*Root Mean Square Error (RMSE) for dynamic trajectory tracking showing performance across different methods on the machined precision grid.*
 
 ## Data Availability
 
@@ -242,14 +242,16 @@ This includes:
 
 If you use LARK in your research, please cite our preprint:
 
-**Sideris, G.**, Abi-Jaoudeh, N., & Collins, D. L. (2024). *LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery*. Research Square. https://doi.org/10.21203/rs.3.rs-7622287/v1
+**Sideris, G.**, Cree, J., Stirling, A., et al. (2025). *LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery*. Research Square Preprint (Version 1). https://doi.org/10.21203/rs.3.rs-7622287/v1
 
 ```bibtex
-@article{sideris2024lark,
+@article{sideris2025lark,
   title={LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery},
-  author={Sideris, George and Abi-Jaoudeh, Nadine and Collins, D. Louis},
+  author={Sideris, George and Cree, Justin and Stirling, Andrew and others},
   journal={Research Square},
-  year={2024},
+  note={Preprint (Version 1)},
+  month={September},
+  year={2025},
   doi={10.21203/rs.3.rs-7622287/v1},
   url={https://www.researchsquare.com/article/rs-7622287/v1}
 }
