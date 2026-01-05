@@ -242,12 +242,12 @@ This includes:
 
 If you use LARK in your research, please cite our preprint:
 
-**Sideris, G.**, Cree, J., Stirling, A., et al. (2025). *LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery*. Research Square Preprint (Version 1). https://doi.org/10.21203/rs.3.rs-7622287/v1
+**Sideris, G.**, Cree, J., Stirling, A., Ly, M., Léger, É., & Collins, D. L. (2025). *LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery*. Research Square Preprint (Version 1). https://doi.org/10.21203/rs.3.rs-7622287/v1
 
 ```bibtex
 @article{sideris2025lark,
   title={LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery},
-  author={Sideris, George and Cree, Justin and Stirling, Andrew and others},
+  author={Sideris, George and Cree, Justin and Stirling, Andrew and Ly, Mamadou and L{\'e}ger, {\'E}tienne and Collins, D. Louis},
   journal={Research Square},
   note={Preprint (Version 1)},
   month={September},
