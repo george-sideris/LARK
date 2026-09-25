@@ -269,7 +269,8 @@ def overview(panels, rows=(0, 1, 2, 3), head_view="full"):
             fig.text((x + 0.02) / width, 1 - (top + 0.16) / height,
                      f"({chr(97 + row * 3 + col)})", fontsize=8, va="top")
         if index < len(rows) - 1:
-            y = 1 - (top + view["row_height"] - 0.08) / height
+            # Leave clear space above the following row's subtitle.
+            y = 1 - (top + view["row_height"] - 0.16) / height
             fig.add_artist(Line2D([left / width, 1 - right / width], [y, y],
                                  transform=fig.transFigure, color="#D8DDE3", lw=0.5))
     shared_orientation(fig)
