@@ -1,0 +1,175 @@
+{
+  "source": "/home/george/Downloads/LARK_TRO_Submission__Copy_/Definitions/3dplots_v2.png",
+  "source_sha256": "06156b0827820224a77df56e98712892a2d5c73002400bc4bc6ae6ec47062894",
+  "description": "Published raster plots; 3D sample coordinates are not included.",
+  "panels": [
+    {
+      "file": "panel_01.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-1",
+      "row": 0,
+      "column": 0,
+      "original_position": [
+        -100.0,
+        70.0
+      ],
+      "method": "Monocular pose fusion",
+      "cameras": "3 cameras",
+      "filter": "Basic",
+      "sha256": "5ea56418edc3313740e49d4e784474c0d2e2f1d053eb82843fd337f63303e446"
+    },
+    {
+      "file": "panel_02.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-2",
+      "row": 0,
+      "column": 1,
+      "original_position": [
+        1100.0,
+        70.0
+      ],
+      "method": "Monocular pose fusion",
+      "cameras": "3 cameras",
+      "filter": "Kalman",
+      "sha256": "28a405f36d2dfa284683c7ad4b5cd364b194240b10e04c6e166dfd041d6e2987"
+    },
+    {
+      "file": "panel_03.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-3",
+      "row": 0,
+      "column": 2,
+      "original_position": [
+        2300.0,
+        70.0
+      ],
+      "method": "Monocular pose fusion",
+      "cameras": "3 cameras",
+      "filter": "Adaptive Kalman",
+      "sha256": "5eb777d6f3d999e9667b568539821835d06309924400e380c18d4f3cf9894bd8"
+    },
+    {
+      "file": "panel_04.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-4",
+      "row": 1,
+      "column": 0,
+      "original_position": [
+        -100.0,
+        927.0
+      ],
+      "method": "Monocular pose fusion",
+      "cameras": "5 cameras",
+      "filter": "Basic",
+      "sha256": "8a218bfa5732cb1e8bee50368d6b872266a6c995d0933d0f93081127c1a3e818"
+    },
+    {
+      "file": "panel_05.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-5",
+      "row": 1,
+      "column": 1,
+      "original_position": [
+        1100.0,
+        927.0
+      ],
+      "method": "Monocular pose fusion",
+      "cameras": "5 cameras",
+      "filter": "Kalman",
+      "sha256": "92b9d95c566e99a6fbc04de6346d4ce0dd413838af525598b57c0b3fd619d38b"
+    },
+    {
+      "file": "panel_06.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-6",
+      "row": 1,
+      "column": 2,
+      "original_position": [
+        2300.0,
+        927.0
+      ],
+      "method": "Monocular pose fusion",
+      "cameras": "5 cameras",
+      "filter": "Adaptive Kalman",
+      "sha256": "75a8dadab5d5bfa0941aa1503461c86a642e7caf7023674f9fdcc2407d994151"
+    },
+    {
+      "file": "panel_07.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-7",
+      "row": 2,
+      "column": 0,
+      "original_position": [
+        -100.0,
+        1784.0
+      ],
+      "method": "Triangulation",
+      "cameras": "3 cameras",
+      "filter": "Basic",
+      "sha256": "e44334a28b21e475872bd3257222518f1c4f1917ff28d945f0cdd455ca274fa4"
+    },
+    {
+      "file": "panel_08.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-8",
+      "row": 2,
+      "column": 1,
+      "original_position": [
+        1100.0,
+        1784.0
+      ],
+      "method": "Triangulation",
+      "cameras": "3 cameras",
+      "filter": "Kalman",
+      "sha256": "1a3752df677430a3fd265222f0c8748a35e6a5897c657aac7044f5fcc176f49f"
+    },
+    {
+      "file": "panel_09.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-9",
+      "row": 2,
+      "column": 2,
+      "original_position": [
+        2300.0,
+        1784.0
+      ],
+      "method": "Triangulation",
+      "cameras": "3 cameras",
+      "filter": "Adaptive Kalman",
+      "sha256": "11a6b4a506fcb8ff5e9787b46ec8c725f867373641dbf0385c17ca17d9f65cf1"
+    },
+    {
+      "file": "panel_10.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-10",
+      "row": 3,
+      "column": 0,
+      "original_position": [
+        -100.0,
+        2641.0
+      ],
+      "method": "Triangulation",
+      "cameras": "5 cameras",
+      "filter": "Basic",
+      "sha256": "fbb5b67476a73b02952763e14ed7f45e4387588717335f4636beee99caab13bf"
+    },
+    {
+      "file": "panel_11.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-11",
+      "row": 3,
+      "column": 1,
+      "original_position": [
+        1100.0,
+        2641.0
+      ],
+      "method": "Triangulation",
+      "cameras": "5 cameras",
+      "filter": "Kalman",
+      "sha256": "b0f2f308d6b383e838884586a4a81b50d8ecf3f9a2e6c7a4e178c77885b587f1"
+    },
+    {
+      "file": "panel_12.png",
+      "cell_id": "8A_C0RhgDekBbdMLvO8j-12",
+      "row": 3,
+      "column": 2,
+      "original_position": [
+        2300.0,
+        2641.0
+      ],
+      "method": "Triangulation",
+      "cameras": "5 cameras",
+      "filter": "Adaptive Kalman",
+      "sha256": "b0a32952e181faac5bb10c6587b6efa36eb677430040c12d723b91ea2bc680a9"
+    }
+  ]
+}

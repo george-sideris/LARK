@@ -1,0 +1,14 @@
+# Intermediate renders and local manuscript previews can be regenerated.
+/work/
+/*.pdf
+/*.png
+/*.svg
+/shaded/
+/shaded_half_head/*.pdf
+/shaded_half_head/*.png
+/shaded_half_head/*.svg
+/publication/*
+!/publication/trajectory_comparison_shaded.pdf
+!/publication/trajectory_comparison_shaded.png
+!/publication/trajectory_comparison_shaded.svg
+!/publication/layout_manifest.json

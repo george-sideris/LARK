@@ -1,0 +1,22 @@
+{
+  "head_view": "half",
+  "font_family": "CMU Serif",
+  "font_style": "mathlike",
+  "shared_orientation_frames_per_overview": 1,
+  "orientation_frame_location": "lower right; direction only, not a metric scale",
+  "panel_directory": "/home/george/LARK/figures/trajectory_comparison/shaded_half_head/panels",
+  "panel_sha256": {
+    "panel_01.png": "30a5f07bd92e58142ace090ddeb5d92961e57a5adc7ff978e51a0fdb52bfc7c9",
+    "panel_02.png": "d66b2699b97afff8b8af15ba70c672a0e34672581928a3195cae21c1dbc27df6",
+    "panel_03.png": "1eea2613b24a4a3ff5e2c64c8527385ecc980a00fda04d844861f68f73397036",
+    "panel_04.png": "534c1494b11fcc4426ff4c5cbb5146f0f2b6267eb64daf5fa42e330328379ea2",
+    "panel_05.png": "bd80ddd7f3d5d0be51f93b3b5292872e4be708b1391e6a119b385ab2c5c6e291",
+    "panel_06.png": "3a59cdec9e78017efc7d94a35034ac462ffadb81a05e2b333aa4f783018224e2",
+    "panel_07.png": "f902f441625fe09ac222474bae0589c1d0339cca3eb03b52ca1839ee1715c70f",
+    "panel_08.png": "72c6fbc3fc8f165174d9bc60ba36e75353f541fa6657cdda686c5b23e45e071c",
+    "panel_09.png": "39672422aa8849d97a2218e8ea6e38b2838498dabea3698c03d7153b5075b7c0",
+    "panel_10.png": "40f0e58f3254c80753ba8c7a623041e892fd150b55f34127420ccf1a532b4637",
+    "panel_11.png": "207680b0953de9d13fdd1a6feaf6c2b1646be177f9ac46a385f0e154eb122e23",
+    "panel_12.png": "12a6ae5b8c5136689c92decdad3e1e22de2b9c30b3128c6da61a63a93ac1e93f"
+  }
+}

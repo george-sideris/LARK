@@ -1,0 +1,192 @@
+{
+  "method": "STL display fit to known GT; published colored curve pixel positions retained",
+  "mesh_sha256": "c4f38de77125b4084478de74fcc17830d11b5a1268b1338fb6f777d30a6a65dd",
+  "mesh_faces_rendered": 385527,
+  "mesh_source_faces": 449448,
+  "head_view": "half",
+  "mesh_clipping": "Lower cut at Z=0 only; no X/Y clipping; nose intact",
+  "head_transform": "Legacy landmark-bounds fit; contextual display, not anatomical registration",
+  "orientation_triads": "Direction only, not a metric scale",
+  "panels": [
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        267.31957672527966,
+        6345.413808389473,
+        4502.65165052321,
+        614.9692401794705,
+        416.4312735412746
+      ],
+      "reference_pixels_sampled": 1068,
+      "median_reference_distance_px": 1.158827358533947,
+      "p95_reference_distance_px": 2.3355657175686217,
+      "panel": 1,
+      "source_sha256": "5ea56418edc3313740e49d4e784474c0d2e2f1d053eb82843fd337f63303e446",
+      "preserved_colored_pixel_positions": 18264
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        270.7263788073377,
+        6344.412439539141,
+        4489.552109282041,
+        614.7631959166401,
+        416.3585393853873
+      ],
+      "reference_pixels_sampled": 1150,
+      "median_reference_distance_px": 1.1942342950520604,
+      "p95_reference_distance_px": 2.4555780319719136,
+      "panel": 2,
+      "source_sha256": "28a405f36d2dfa284683c7ad4b5cd364b194240b10e04c6e166dfd041d6e2987",
+      "preserved_colored_pixel_positions": 18262
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        232.96096987737096,
+        6346.273118736341,
+        4508.14373303835,
+        614.6918939420734,
+        416.6437791607811
+      ],
+      "reference_pixels_sampled": 789,
+      "median_reference_distance_px": 1.0838222420144294,
+      "p95_reference_distance_px": 2.315447682788247,
+      "panel": 3,
+      "source_sha256": "5eb777d6f3d999e9667b568539821835d06309924400e380c18d4f3cf9894bd8",
+      "preserved_colored_pixel_positions": 15780
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        234.49114758373767,
+        6353.593881019312,
+        4530.349378321252,
+        614.7901255846034,
+        416.77803712553055
+      ],
+      "reference_pixels_sampled": 505,
+      "median_reference_distance_px": 0.965374458083262,
+      "p95_reference_distance_px": 2.274898693748496,
+      "panel": 4,
+      "source_sha256": "8a218bfa5732cb1e8bee50368d6b872266a6c995d0933d0f93081127c1a3e818",
+      "preserved_colored_pixel_positions": 15687
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        236.6012629205077,
+        6322.484829588514,
+        4515.865444799854,
+        612.613497683378,
+        417.6893490119323
+      ],
+      "reference_pixels_sampled": 519,
+      "median_reference_distance_px": 0.9500300686361396,
+      "p95_reference_distance_px": 2.301603155057166,
+      "panel": 5,
+      "source_sha256": "92b9d95c566e99a6fbc04de6346d4ce0dd413838af525598b57c0b3fd619d38b",
+      "preserved_colored_pixel_positions": 15541
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        232.8750272151593,
+        6343.353909717278,
+        4522.194307476029,
+        614.5077796691844,
+        416.5714615323019
+      ],
+      "reference_pixels_sampled": 492,
+      "median_reference_distance_px": 1.022931033376905,
+      "p95_reference_distance_px": 2.1970064931437405,
+      "panel": 6,
+      "source_sha256": "75a8dadab5d5bfa0941aa1503461c86a642e7caf7023674f9fdcc2407d994151",
+      "preserved_colored_pixel_positions": 14608
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        232.63174525462765,
+        6332.237450080828,
+        4494.624596663477,
+        614.8375233482426,
+        416.8001309082139
+      ],
+      "reference_pixels_sampled": 1225,
+      "median_reference_distance_px": 1.2908443995806476,
+      "p95_reference_distance_px": 2.349063457525782,
+      "panel": 7,
+      "source_sha256": "e44334a28b21e475872bd3257222518f1c4f1917ff28d945f0cdd455ca274fa4",
+      "preserved_colored_pixel_positions": 18441
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        233.74926153360735,
+        6347.268635252832,
+        4494.706901342804,
+        615.4476919824389,
+        416.2844048164677
+      ],
+      "reference_pixels_sampled": 1217,
+      "median_reference_distance_px": 1.3609309112268764,
+      "p95_reference_distance_px": 2.3831143848446597,
+      "panel": 8,
+      "source_sha256": "1a3752df677430a3fd265222f0c8748a35e6a5897c657aac7044f5fcc176f49f",
+      "preserved_colored_pixel_positions": 18434
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        232.41683199028233,
+        6336.920924244658,
+        4497.333395858,
+        615.0183083952498,
+        416.6428956132138
+      ],
+      "reference_pixels_sampled": 1185,
+      "median_reference_distance_px": 1.3140255032947135,
+      "p95_reference_distance_px": 2.2874384328008794,
+      "panel": 9,
+      "source_sha256": "11a6b4a506fcb8ff5e9787b46ec8c725f867373641dbf0385c17ca17d9f65cf1",
+      "preserved_colored_pixel_positions": 17864
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        233.02288065271685,
+        6342.3247431331965,
+        4531.847427648583,
+        614.7167109498973,
+        417.0138619438575
+      ],
+      "reference_pixels_sampled": 500,
+      "median_reference_distance_px": 1.1190108219091934,
+      "p95_reference_distance_px": 2.2089991637668587,
+      "panel": 10,
+      "source_sha256": "fbb5b67476a73b02952763e14ed7f45e4387588717335f4636beee99caab13bf",
+      "preserved_colored_pixel_positions": 14471
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        233.02883466968964,
+        6338.783058129866,
+        4515.102960149367,
+        614.9923215052421,
+        416.2218499785553
+      ],
+      "reference_pixels_sampled": 504,
+      "median_reference_distance_px": 1.1457746185566997,
+      "p95_reference_distance_px": 2.2627178567308652,
+      "panel": 11,
+      "source_sha256": "b0f2f308d6b383e838884586a4a81b50d8ecf3f9a2e6c7a4e178c77885b587f1",
+      "preserved_colored_pixel_positions": 14492
+    },
+    {
+      "parameters_ymax_sx_sy_tx_ty": [
+        232.82278975638985,
+        6344.151915643462,
+        4520.568710493255,
+        614.903498810733,
+        416.62216937742846
+      ],
+      "reference_pixels_sampled": 504,
+      "median_reference_distance_px": 1.0974783811869762,
+      "p95_reference_distance_px": 2.1315431870311,
+      "panel": 12,
+      "source_sha256": "b0a32952e181faac5bb10c6587b6efa36eb677430040c12d723b91ea2bc680a9",
+      "preserved_colored_pixel_positions": 14533
+    }
+  ]
+}
