@@ -242,22 +242,22 @@ This includes:
 
 If you use LARK in your research, please cite our preprint:
 
-**Sideris, G.**, Cree, J., Stirling, A., Ly, M., Léger, É., & Collins, D. L. (2025). *LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery*. Research Square Preprint (Version 1). https://doi.org/10.21203/rs.3.rs-7622287/v1
+**Sideris, G.**, Cree, J., Stirling, A., Ly, M., Léger, É., & Collins, D. L. (2026). *LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery*. arXiv. https://doi.org/10.48550/arXiv.2610.07561
 
 ```bibtex
-@article{sideris2025lark,
+@misc{sideris2026lark,
   title={LARK: A Low-Cost, Accurate, Occlusion-Resilient, Kalman Filter-Assisted Tracking System for Image-Guided Surgery},
   author={Sideris, George and Cree, Justin and Stirling, Andrew and Ly, Mamadou and L{\'e}ger, {\'E}tienne and Collins, D. Louis},
-  journal={Research Square},
-  note={Preprint (Version 1)},
-  month={September},
-  year={2025},
-  doi={10.21203/rs.3.rs-7622287/v1},
-  url={https://www.researchsquare.com/article/rs-7622287/v1}
+  year={2026},
+  eprint={2610.07561},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  doi={10.48550/arXiv.2610.07561},
+  url={https://arxiv.org/abs/2610.07561}
 }
 ```
 
-**Preprint:** https://www.researchsquare.com/article/rs-7622287/v1
+**Preprint:** https://arxiv.org/abs/2610.07561
 
 ## License
 
